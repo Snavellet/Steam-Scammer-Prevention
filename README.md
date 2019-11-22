@@ -1,7 +1,7 @@
 # Steam Scammer Prevention
 A bot made in Python to prevent scammers to scam you.
 
-#Features
+# Features
 
 * Check name for links
 * Check messages for dangerous links
