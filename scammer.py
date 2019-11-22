@@ -10,12 +10,18 @@ import utils.events as event
 from colorama import Fore, init
 import re
 from steam.enums.common import EFriendRelationship
+from utils.email import Mail
+import json
+
+with open('config.json', 'r') as JSON:
+    config = json.load(JSON)
 
 init()
 
-username = ''
-password = ''
-shared_secret = ''
+username = config['username']
+password = config['password']
+shared_secret = config['shared_secret']
+article = 'https://steamcommunity.com/sharedfiles/filedetails/?id=1261293152'
 
 guard = steam.guard.SteamAuthenticator(secrets={'shared_secret': shared_secret})
 client = steam.client.SteamClient()
@@ -31,6 +37,8 @@ def on_friend_request(user):
     search_link = re.findall(r'(htt\w+\W+)(\w+\.\w{3})', user.name)
 
     if user.relationship == EFriendRelationship.RequestRecipient:
+        email = Mail(config['from_email'], config['from_email_password'], config['to_email'], 'Accepted Friend Request',
+                     f'''[+] Name: {user.name}\n[+] Steam Profile: https://steamcommunity.com/profiles/{user.steam_id}\n[+] SteamREP: https://steamrep.com/search?q={user.steam_id}\n\n[++] Important: https://steamcommunity.com/sharedfiles/filedetails/?id=1261293152''')
         domains = []
 
         for el in search_link:
@@ -55,6 +63,7 @@ def on_friend_request(user):
                                f'therefore, I will remove you from my friendlist.')
         else:
             print(Fore.GREEN + f'[+] Accepting friend request from: {user.steam_id}')
+            email.report()
             client.friends.add(user)
             sleep(2)
             user.send_message(greeting_message)
