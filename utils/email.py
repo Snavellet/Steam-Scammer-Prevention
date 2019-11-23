@@ -51,3 +51,7 @@ class Mail():
         server.login(self.from_email, self.password)
         server.sendmail(self.from_email, self.to_email, text)
         server.quit()
+
+
+def mail(reputation, name, steam_id, article):
+    return f'''[+] Reputation: {reputation}\n[+] Name: {name}\n[+] Steam Profile: https://steamcommunity.com/profiles/{steam_id}\n[+] SteamREP: https://steamrep.com/search?q={steam_id}\n\n[++] Important: {article}'''

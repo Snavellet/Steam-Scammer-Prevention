@@ -4,5 +4,8 @@
   "shared_secret": "",
   "from_email": "",
   "from_email_password": "",
-  "to_email": ""
+  "to_email": "",
+  "auto_accept": "",
+  "greeting_message": "",
+  "file_limit_report": ""
 }
