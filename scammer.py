@@ -9,9 +9,8 @@ import steam.client
 import utils.events as event
 from colorama import Fore, init
 from steam.enums.common import EFriendRelationship
-from utils.email import Mail
+from utils.email import Mail, mail
 from utils.check_scammer import check_scammer, check_scammer_name, check_scammer_name_message
-from utils.email import mail
 import json
 import re
 import os
