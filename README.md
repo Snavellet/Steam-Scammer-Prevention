@@ -14,6 +14,9 @@ A bot made in Python to prevent scammers from scamming you.
 * Input your details in config.json
 * Run scammer.py
 
+# Requirement
+**[Python](https://www.python.org/)** --> 3.6 or more 
+
 # Configuration
 
 ```json
