@@ -16,7 +16,7 @@ idna==2.8
 idna-ssl==1.1.0
 multidict==4.6.1
 protobuf==3.10.0
-pycares==3.0.0
+pycares==4.2.0
 pycparser==2.19
 requests==2.22.0
 six==1.13.0
